@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Django blog</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <header>
+        <div class="nav-left">
+            <h1><a href="{% url 'home' %}">Django blog</a></h1>
+            
+        </div>
+        <div class="nav-right">
+            <h1><a href="{% url 'post_new' %}">New blog post</a></h1>
+        </div>
+    
+    </header>
+    <div>
+        {% if user.is_authnticated %}
+            {% block content %}
+            {% endblock %}
+
+        {% else %}
+        <a href="">Login Here</a>
+
+        {% endif %}
+    </div>
+    
+</body>
+</html>
